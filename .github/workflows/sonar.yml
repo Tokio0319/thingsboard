@@ -26,6 +26,6 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
         with:
           args: >
-            -Dsonar.projectKey=mall
-            -Dsonar.projectName=mall
+            -Dsonar.projectKey=thingsboard
+            -Dsonar.projectName=thingsboard
             -Dsonar.java.binaries=**/target/classes
