@@ -36,4 +36,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=thingsboard -Dsonar.projectName='thingsboard'
+        run: |
+          mvn license:format  # 自动修复许可证头
+          git commit -am "Fix license headers" || true  # 提交修复（忽略无变更的情况）
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=thingsboard -Dsonar.projectName='thingsboard'  
